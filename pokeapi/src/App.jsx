@@ -83,9 +83,10 @@ function App() {
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif`} alt="" />
               </div>
               <div className='md:w-2/3 md:p-2'>
+                  <h2 className='text-center capitalize text-2xl font-bold'>
+                    {pokemon.name} # {pokemon.id}
+                  </h2>
                 <div className='flex justify-evenly'>
-                  <h2>{pokemon.name}</h2>
-                  <p># {pokemon.id}</p>
                   <p>Types: {pokemon.types.map((type) => type.type.name).join(', ')}</p>
                   <p>Weight: {pokemon.weight} kg</p>
                 </div>
@@ -93,12 +94,12 @@ function App() {
                   {
                     pokemon.stats.map((val) =>
                     (
-                        <div className='h-6 my-3 bg-gradient-to-tr from-gray-300 to-gray-500 -300 rounded-full relative'>
-                          <div className='text-white  font-bold text-sm absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-                            { val.stat.name + ':' + val.base_stat}
-                          </div>
-                          <div className={`rounded-full h-full bg-gradient-to-tr from-blue-500 to-blue-400 w-[${(val.base_stat / 255) * 100}%]`}></div>
+                      <div className='h-6 my-3 bg-gradient-to-tr from-gray-300 to-gray-500 -300 rounded-full relative'>
+                        <div className='text-white  font-bold drop-shadow text-sm absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                          {val.stat.name.replace("-", " ") + ': ' + val.base_stat}
                         </div>
+                        <div className={`rounded-full h-full bg-gradient-to-tr from-blue-500 to-blue-400 w-[${(val.base_stat / 255) * 100}%]`}></div>
+                      </div>
                     ))
                   }
                 </div>
